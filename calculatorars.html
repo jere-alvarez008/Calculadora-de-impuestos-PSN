@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de impuestos de Playstation</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            width: 200px;
+            border: none;
+            background-color: #333333;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #337ab7;
+            color: #ffffff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Calculadora de Impuestos </h1>
+        
+        <label for="preciousd">Precio en USD:</label>
+        <input type="number" id="preciousd" placeholder="Ingrese el precio en USD">
+        
+        <button onclick="calcular()">Calcular</button>
+        
+        <p id="resultado"></p>
+
+        <img class="logo" src="descarga.png" alt="Logo PlayStation">
+    </div>
+    
+    <script>
+        function calcular() {
+            var preciousd = parseFloat(document.getElementById("preciousd").value);
+            var conversionapesos = preciousd * 254.50;
+            var iva = (conversionapesos * 29) / 100;
+            var precio = conversionapesos + iva;
+            var leypais = (precio * 45) / 100;
+            var preciofinal = iva + conversionapesos + leypais;
+            
+            document.getElementById("resultado").innerHTML = "El total a Pagar son: ARS $" + preciofinal.toFixed(2);
+        }
+    </script>
+</body>
+</html>
